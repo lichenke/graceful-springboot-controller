@@ -1,6 +1,9 @@
 package com.chenke.gracefulcontroller.controller.advice;
 
+import static com.chenke.gracefulcontroller.pojo.AppCode.APP_ERROR;
+
 import com.chenke.gracefulcontroller.annotation.ExcludeControllerResponseAdvice;
+import com.chenke.gracefulcontroller.exception.AppException;
 import com.chenke.gracefulcontroller.pojo.ResultVo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -39,7 +42,7 @@ public class ControllerResponseAdvice implements ResponseBodyAdvice<Object> {
             try {
                 return objectMapper.writeValueAsString(new ResultVo<>(o));
             } catch (JsonProcessingException e) {
-                throw new IllegalStateException(e);
+                throw new AppException(e.getMessage(), APP_ERROR);
             }
         }
         return new ResultVo<>(o);
