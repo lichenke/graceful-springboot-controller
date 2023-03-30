@@ -4,7 +4,6 @@ import static com.chenke.gracefulcontroller.pojo.AppCode.APP_ERROR;
 
 import com.chenke.gracefulcontroller.annotation.ExcludeControllerResponseAdvice;
 import com.chenke.gracefulcontroller.exception.AppException;
-import com.chenke.gracefulcontroller.pojo.AppCode;
 import com.chenke.gracefulcontroller.pojo.Product;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +27,7 @@ public class ProductController {
 
 
     @PostMapping("/find")
-    public Product findPage(@RequestBody @Validated Product product) {
+    public Product find(@RequestBody @Validated Product product) {
         if (product.getId() == 0) {
             throw new AppException("参数有点问题哦", APP_ERROR);
         }

@@ -23,7 +23,7 @@ public class ControllerExceptionAdvice {
     }
 
     @ExceptionHandler({AppException.class})
-    public ResultVo<?> AppExceptionHandler_(AppException e) {
+    public ResultVo<?> AppExceptionHandler(AppException e) {
         return new ResultVo<>(e.getCode(), e.getMsg(), e.getMessage());
     }
 
